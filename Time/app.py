@@ -5,7 +5,6 @@ import time
 app = Flask(__name__)
 
 
-
 @app.route("/")
 def home():
     return render_template('RLEAPP.html')
@@ -21,8 +20,9 @@ def displau_inputter():
         text = open(text, 'r')
     except FileNotFoundError:
         return render_template('error.html', msg = 'File Does Not Exist')
-    text = text.read()
-    text = text.replace('\n','<br />')
+    text = text.read().replace('\n','<br>')
+
+    print(text)
     return render_template('display.html', text = text)
 
 @app.route("/enter_rle")
