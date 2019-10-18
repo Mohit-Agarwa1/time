@@ -22,8 +22,8 @@ def displau_inputter():
     except FileNotFoundError:
         return render_template('error.html', msg = 'File Does Not Exist')
     text = text.read()
-    text = text.replace('\n','<br>')
-    return text + '<a href="/" class="button">Done</a>'
+    text = text.replace('\n','<br />')
+    return render_template('display.html', text = text)
 
 @app.route("/enter_rle")
 def enter_rle():
