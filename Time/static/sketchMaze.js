@@ -96,7 +96,7 @@ Module.prototype.Typed = function() {
 
 Module.prototype.Over = function() {
   if (mouseX>(this.x)-(this.s) && mouseX<(this.x)+(this.s) && mouseY>(this.y)-(this.s) && mouseY<(this.y)+(this.s)){
-    this.isOverRectangle = true;
+    this.isOverRectangle = false;
   } else {
     this.isOverRectangle = false;
   }
@@ -108,7 +108,7 @@ Module.prototype.draw2 = function() {
   translate(this.x, this.y);
   rectMode(CENTER);
   rotate(randomChoice([0, Math.PI/2]));
-  temp = randomChoice([0,1,2])
+  temp = randomChoice([1,0])
   if (temp === 0){
     noStroke();
     fill(this.c1);

@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request
-import webbrowser
-import time
+
 
 app = Flask(__name__)
 
@@ -22,7 +21,6 @@ def displau_inputter():
         return render_template('error.html', msg = 'File Does Not Exist')
     text = text.read().replace('\n','<br>')
 
-    print(text)
     return render_template('display.html', text = text)
 
 @app.route("/enter_rle")
@@ -34,7 +32,7 @@ def rle_post():
     text = request.form['text']
     text = text.replace('\n','<br>') + '<br>'
     #function to save/whatever
-    return text + '<a href="/" class="button">Done</a>'
+    return render_template('display.html', text=text)
 
 
 
