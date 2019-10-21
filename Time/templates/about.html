@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/spiro.css') }}">
+    <script src="{{ url_for('static', filename='sketchSpiro.js') }}" charset="utf-8"></script>
+</head>
+<body>
+
+<table width=100% height=100%>
+    <td width=30% id="menu">
+        <h1>ASCII Art</h1>
+        <h2>by Mohit Agarwal</h2>
+
+        <h2><br>An application for the manipulation of ASCII art files and enoding them with a RLE algorithm.<br><br>Thank
+            you very much for using this application.<br><br>FOSS license retained by Mohit Agarwal<br><br>mohit.agarwal@sky.com</h2>
+        <form>
+            <div id="hypo-btn" value="Hypotrochoid" class="active" disabled></div>
+            <div id="epi-btn" value="Epitrochoid"></div>
+            <a href="./" class="button" style='margin-bottom: 2%'>Menu</a>
+
+
+            <div id="pause-btn" value="Pause" class="active" disabled></div>
+
+        </form>
+    </td>
+    <td id="canvas-td" width=70%;>
+        <canvas id="canvas-main"></canvas>
+    </td>
+</table>
+<script>
+    // Get document elements
+
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+    }
+
+    var btnHypo = document.getElementById("hypo-btn");
+    var btnEpi = document.getElementById("epi-btn");
+    var input;
+    var inputr;
+    var inputPen;
+
+    var btnStart;
+    var btnPause = document.getElementById("pause-btn");
+    var aPNG = true
+    var aJPG = false
+
+    // Set up canvases
+    var canvasTd = document.getElementById("canvas-td");
+
+    // Main onscreen canvas
+    var mainCanvas = document.getElementById("canvas-main");
+    mainCanvas.width = canvasTd.offsetWidth;
+    mainCanvas.height = canvasTd.offsetHeight;
+    var ctxMain = mainCanvas.getContext("2d");
+
+    // Offscreen canvases to draw to main canvas
+    var circlesCanvas = document.createElement("canvas");
+    circlesCanvas.width = canvasTd.offsetWidth;
+    circlesCanvas.height = canvasTd.offsetHeight;
+    var ctxCircles = circlesCanvas.getContext("2d");
+
+    var spiroCanvas = document.createElement("canvas");
+    spiroCanvas.width = canvasTd.offsetWidth;
+    spiroCanvas.height = canvasTd.offsetHeight;
+    var ctxSpiro = spiroCanvas.getContext("2d");
+
+    // Global variables
+    var R = 360
+    var r = 105
+    var p = getRandomInt(15,40)+(Math.random()*15);
+    var t = 0;								// angle
+    var speedr;								// rotation speed of circle
+    var posr;								// position of rotating circle
+    var posPen;								// position of pen
+    var lastPosPen;							// last position of pen
+    var numRotations;						// number of revolutions made by rotating circle
+
+
+
+    console.log(p);
+
+    // User selects hypotrochoid
+
+    btnHypo.disabled = false;
+    btnEpi.disabled = true;
+    btnPause.classList.remove("active");
+    btnPause.disabled = false;
+    console.log(btnPause.disabled)
+    btnCircles = false;
+
+
+    // User selects epitrochoid
+    btnEpi.addEventListener("click", function () {
+        btnHypo.classList.remove("active");
+        btnHypo.disabled = false;
+        btnEpi.classList.add("active");
+        btnEpi.disabled = true;
+        initSpiro();
+    })
+
+    // User starts spirograph animation
+
+
+    // User pauses spirograph animation
+
+
+    // User resets spirograph
+
+
+    initSpiro();
+
+
+    initSpiro();
+    window.requestAnimationFrame(render);
+</script>
+
+</body>
+</html>

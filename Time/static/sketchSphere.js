@@ -1,5 +1,3 @@
-
-
 let sketch = function(p) {
   let rows = Math.trunc( (window.innerHeight*window.innerWidth)/72000 );;
   let radius = Math.trunc( (window.innerHeight*window.innerWidth)/6000);
@@ -59,8 +57,8 @@ let sketch = function(p) {
           let endx = p.constrain(stripe.end, -length, length);
           let startspeed = p.sqrt(2) - p.sqrt(stripe.y * stripe.y + startx * startx) / radius;
           let endspeed = p.sqrt(2) - p.sqrt(stripe.y * stripe.y + endx * endx) / radius;
-          stripe.start += startspeed;
-          stripe.end += endspeed;
+          stripe.start += startspeed + (startspeed * 0.6);
+          stripe.end += endspeed + (endspeed * 0.6);
 
       }
     }

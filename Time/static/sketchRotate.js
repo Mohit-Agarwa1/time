@@ -11,7 +11,7 @@ let sketch = function(p) {
   p.setup = function() {
     let canvas_m = p.createCanvas(window.innerWidth, window.innerHeight);
     canvas_m.position(0,0);
-    canvas_m.style('z-index','-12')
+    canvas_m.style('z-index','-12');
     THE_SEED = p.floor(p.random(9999999));
     p.randomSeed(THE_SEED);
     p.background('#111');
